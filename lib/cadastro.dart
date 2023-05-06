@@ -1,7 +1,31 @@
 import 'package:flutter/material.dart';
 
+class Registercliente {
+  String? email;
+  String? nome;
+  String? senha;
+
+  Registercliente({this.email, this.nome, this.senha});
+
+  Registercliente.fromJson(Map<String, dynamic> json) {
+    email = json['email'];
+    nome = json['nome'];
+    senha = json['senha'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['email'] = this.email;
+    data['nome'] = this.nome;
+    data['senha'] = this.senha;
+    return data;
+  }
+}
+
 class RegisterPage extends StatefulWidget {
   const RegisterPage({ Key? key }) : super(key: key);
+
+
 
   @override
   _RegisterPageState createState() => _RegisterPageState();
@@ -15,16 +39,17 @@ class _RegisterPageState extends State<RegisterPage> {
         width: double.infinity,
         height: double.infinity,
         child: Padding(
-          padding: const EdgeInsets.all(50.0),
+          padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextFormField(
             autofocus: true,
-             keyboardType: TextInputType.text,
+             keyboardType: TextInputType.emailAddress,
              style: new TextStyle(color: Colors.black, fontSize: 20),
              decoration: InputDecoration(
-               labelText: "Usuário",
+               icon: Icon(Icons.email),
+               labelText: "E-mail",
                labelStyle: TextStyle(color: Colors.black,fontSize: 15)
              ),
         ),
@@ -34,6 +59,7 @@ class _RegisterPageState extends State<RegisterPage> {
             keyboardType: TextInputType.visiblePassword,
             style: TextStyle(color: Colors.black, fontSize: 20),
             decoration: InputDecoration(
+                icon: Icon(Icons.lock),
                labelText: "Senha",
                labelStyle: TextStyle(color: Colors.black,fontSize: 15)
              ),
@@ -45,6 +71,7 @@ class _RegisterPageState extends State<RegisterPage> {
             keyboardType: TextInputType.visiblePassword,
             style: TextStyle(color: Colors.black, fontSize: 20),
             decoration: InputDecoration(
+              icon: Icon(Icons.lock),
                labelText: "Confirmar Senha",
                labelStyle: TextStyle(color: Colors.black,fontSize: 15)
              ),

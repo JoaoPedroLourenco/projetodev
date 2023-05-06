@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:telaslogin/cadastro.dart';
+import 'package:telaslogin/home.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({ Key? key, required MaterialAccentColor primarySwatch }) : super(key: key);
@@ -18,16 +19,17 @@ class _LoginPageState extends State<LoginPage> {
         width: double.infinity,
         height: double.infinity,
         child: Padding(
-          padding: const EdgeInsets.all(50.0),
+          padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextFormField(
             autofocus: true,
-             keyboardType: TextInputType.text,
+             keyboardType: TextInputType.emailAddress,
              style: new TextStyle(color: Colors.black, fontSize: 20),
              decoration: InputDecoration(
-               labelText: "Usuário",
+               icon: Icon(Icons.email),
+               labelText: "E-mail",
                labelStyle: TextStyle(color: Colors.black,fontSize: 15)
              ),
         ),
@@ -37,6 +39,7 @@ class _LoginPageState extends State<LoginPage> {
             keyboardType: TextInputType.visiblePassword,
             style: TextStyle(color: Colors.black, fontSize: 20),
             decoration: InputDecoration(
+              icon: Icon(Icons.lock),
                labelText: "Senha",
                labelStyle: TextStyle(color: Colors.black,fontSize: 15)
              ),
@@ -57,7 +60,9 @@ class _LoginPageState extends State<LoginPage> {
                  fontSize: 15
                  ),
               ),
-               onPressed: () {},
+               onPressed: () {Navigator.push(
+               context,
+               MaterialPageRoute(builder: (context) => const Homepage()));},
              ),
             
            ),
@@ -68,6 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                child: Text(
                  "Cadastrar-se",
                  style: TextStyle(
+                decoration: TextDecoration.underline,
                  color: Colors.blueAccent,
                  fontSize: 15
                  ),
